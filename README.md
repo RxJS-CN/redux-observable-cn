@@ -8,52 +8,52 @@
 [![code climate](https://codeclimate.com/github/redux-observable/redux-observable/badges/gpa.svg)](https://codeclimate.com/github/redux-observable/redux-observable)
 [![Greenkeeper badge](https://badges.greenkeeper.io/redux-observable/redux-observable.svg)](https://greenkeeper.io/)
 
-[RxJS 5](http://github.com/ReactiveX/RxJS)-based middleware for
-[Redux](http://github.com/reactjs/redux). Compose and cancel async actions to create side effects and more.
+基于 [RxJS 5](http://github.com/ReactiveX/RxJS) 的 [Redux](http://github.com/reactjs/redux) 中间件
+。 通过组合和取消异步动作去创建副作用。
 
 [https://redux-observable.js.org](https://redux-observable.js.org)
 
-## Install
+## 安装
 
-This has peer dependencies of `rxjs@5.x.x` and `redux`, which will have to be installed as well.
+强依赖于 `rxjs@5.x.x` 和 `redux`，所以同样也要安装。
 
 ```bash
 npm install --save redux-observable
 ```
 
-**IMPORTANT:** redux-observable does not add any of the RxJS operators to the `Observable.prototype` so you will need to import the ones you use or import all of them in your entry file. [Learn more](http://redux-observable.js.org/docs/Troubleshooting.html#rxjs-operators-are-missing-eg-typeerror-actionoftypeswitchmap-is-not-a-function).
+**IMPORTANT:** redux-observable 并没有给 `Observable.prototype` 添加任何 RxJS 操作符，所以你需要在入口导入你使用的或者所有操作符。 [更多](http://redux-observable.js.org/docs/Troubleshooting.html#rxjs-operators-are-missing-eg-typeerror-actionoftypeswitchmap-is-not-a-function).
 
-##### Optional Adapters
+##### 可选的适配器
 
-Epics use RxJS v5 by default. You can use other stream libraries (other than RxJS v5) by using an Adapter.
+Epics 默认使用 RxJS v5。 你可以通过适配器使用任何其他流库。(除了 RxJS v5 之外的)。
 
 * [RxJS v4](https://github.com/redux-observable/redux-observable-adapter-rxjs-v4)
 * [most.js](https://github.com/redux-observable/redux-observable-adapter-most)
 
-You can write your own adapter too:
+你也可以实现你自己的适配器:
 
 ```js
 const adapter = {
-  input: input$ => /* convert Observable to your preferred stream library */,
-  output: output$ => /* convert your preferred stream back to an Observable */
+  input: input$ => /* 将 Observable 转化为你喜欢的流库 */,
+  output: output$ => /* 将你喜欢的流库转化为 Observable */
 };
 ```
 
-See the existing adapters for examples. Keep in mind that while you still need RxJS v5 installed, redux-observable only pulls in the minimum amount of RxJS it needs internally--it doesn't import _all_ of RxJS.
+参见现有适配器样例。牢记，虽然你仍然需要安装 RxJS v5， redux-observable 仅仅拉取了它内部需要的最小体积的 RxJS －不需要导入所有的 RxJS。
 
 ##### UMD
 
-We publish a UMD build inside our npm package. You can use it via the [unpkg](https://unpkg.com/) CDN:
+我们发布了 npm 包构件出的 UMD。 你可以通过 [unpkg](https://unpkg.com/) 来使用:
 
 [https://unpkg.com/redux-observable@latest/dist/redux-observable.min.js](https://unpkg.com/redux-observable@latest/dist/redux-observable.min.js)
 
-## Watch an introduction
+## 观看介绍
 
 [![Watch a video on redux-observable](http://img.youtube.com/vi/AslncyG8whg/0.jpg)](https://www.youtube.com/watch?v=AslncyG8whg)
 
-## JSBin Examples
+## JSBin 例子
 
-To see redux-observable in action, here's a very simple JSBin to play around with:
+看看实践中的 redux-observable，下面是一些简单的 JSBin 例子。
 
 * [Using Raw HTML APIs](http://jsbin.com/birogu/edit?js,output)
 * [Using React](http://jsbin.com/jexomi/edit?js,output)
@@ -61,19 +61,19 @@ To see redux-observable in action, here's a very simple JSBin to play around wit
 * Using Angular v2 (TODO)
 * Using Ember (TODO)
 
-## Documentation
+## 文档
 
 ### [https://redux-observable.js.org](https://redux-observable.js.org)
 
-## Discuss
+## 讨论
 
 [![Join the chat at https://gitter.im/redux-observable/redux-observable](https://badges.gitter.im/redux-observable/redux-observable.svg)](https://gitter.im/redux-observable/redux-observable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Everyone is welcome on our [Gitter channel](https://gitter.im/redux-observable/redux-observable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)!
 
-## Custom Emoji
+## 定制的 Emoji
 
-##### Save this:
+##### 保存它:
 
 <img src="https://cloud.githubusercontent.com/assets/762949/18562188/905876f6-7b37-11e6-8677-f9dd091490f6.gif" width="22" height="22" />
 
@@ -81,6 +81,6 @@ Add the redux-observable spinning logo to your Slack channel! [Slack Instruction
 
 ***
 
-*redux-observable is a community-driven project and is not officially affiliated with Netflix.
+*redux-observable 是一个社区驱动的项目和 Netflix 没有官方的附属关系。
 
 :shipit:
