@@ -11,7 +11,7 @@
 基于 [RxJS 5](http://github.com/ReactiveX/RxJS) 的 [Redux](http://github.com/reactjs/redux) 中间件
 。 通过组合和取消异步动作去创建副作用。
 
-[https://redux-observable.js.org](https://redux-observable.js.org)
+[https://redux-observable-cn.js.org/](https://redux-observable-cn.js.org/)
 
 ## 安装
 
@@ -21,7 +21,7 @@
 npm install --save redux-observable
 ```
 
-**IMPORTANT:** redux-observable 并没有给 `Observable.prototype` 添加任何 RxJS 操作符，所以你需要在入口导入你使用的或者所有操作符。 [更多](http://redux-observable.js.org/docs/Troubleshooting.html#rxjs-operators-are-missing-eg-typeerror-actionoftypeswitchmap-is-not-a-function).
+**重要:** redux-observable 并没有给 `Observable.prototype` 添加任何 RxJS 操作符，所以你需要在入口导入你使用的或者所有操作符。 [更多](http://redux-observable.js.org/docs/Troubleshooting.html#rxjs-operators-are-missing-eg-typeerror-actionoftypeswitchmap-is-not-a-function).
 
 ##### 可选的适配器
 
@@ -69,7 +69,7 @@ const adapter = {
 
 [![Join the chat at https://gitter.im/redux-observable/redux-observable](https://badges.gitter.im/redux-observable/redux-observable.svg)](https://gitter.im/redux-observable/redux-observable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Everyone is welcome on our [Gitter channel](https://gitter.im/redux-observable/redux-observable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)!
+欢迎每个人 [Gitter channel](https://gitter.im/redux-observable/redux-observable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)!
 
 ## 定制的 Emoji
 
@@ -77,7 +77,7 @@ Everyone is welcome on our [Gitter channel](https://gitter.im/redux-observable/r
 
 <img src="https://cloud.githubusercontent.com/assets/762949/18562188/905876f6-7b37-11e6-8677-f9dd091490f6.gif" width="22" height="22" />
 
-Add the redux-observable spinning logo to your Slack channel! [Slack Instructions](https://get.slack.help/hc/en-us/articles/206870177-Create-custom-emoji)
+将 redux-observable 的旋转 logo 添加到你的 Slack channel 中！[Slack Instructions](https://get.slack.help/hc/en-us/articles/206870177-Create-custom-emoji)
 
 ***
 

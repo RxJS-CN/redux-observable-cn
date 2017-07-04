@@ -1,44 +1,46 @@
 # Epics
 
->##### Not familiar with Observables/RxJS v5?
-> redux-observable requires an understanding of Observables with RxJS v5. If you're new to Reactive Programming with RxJS v5, head over to [http://reactivex.io/rxjs/](http://reactivex.io/rxjs/) to familiarize yourself first.
+>##### 不熟悉 Observables/RxJS v5?
+> redux-observable 需要理解 RxJS v5 的 Observables。 如果你是用 RxJS v5 进行响应式编程的新手, 转向 [http://reactivex.io/rxjs/](http://reactivex.io/rxjs/) 先熟悉下。
 > 
-> redux-observable (because of RxJS) truly shines the most for complex async/side effects. If you're not already comfortable with RxJS you might consider using [redux-thunk](https://github.com/gaearon/redux-thunk) for simple side effects and then use redux-observable for the complex stuff. That way you can remain productive and learn RxJS as you go. redux-thunk is much simpler to learn and use, but that also means it's far less powerful. Of course, if you already love Rx like we do, you will probably use it for everything!
+> redux-observable (因为 RxJS) 的真正光芒在于处理最为复杂的异步逻辑。如果你对 RxJS 感到不太舒适，你可以考虑使用[redux-thunk](https://github.com/gaearon/redux-thunk) 处理简单异步逻辑，然后使用 redux-observable 处理复杂情况。这样你既可以保持生产力又可以学习 RxJS。redux-thunk 学习和使用起来更简单，这也意味着它远没有那么强大。所以，如果你已经和我们一样喜爱 Rx，你可能会用它来做每一件事情。
 
-An **Epic** is the core primitive of redux-observable.
+**Epic** 是 redux-observable 的核心原语。
 
-It is a function which takes a stream of actions and returns a stream of actions. **Actions in, actions out.**
+它是一个函数，接收 actions 流作为参数并且返回 actions 流。 **Actions 入, actions 出.**
 
-It has roughly this type signature:
+它的签名如下:
 
 ```js
 function (action$: Observable<Action>, store: Store): Observable<Action>;
 ```
 
-While you'll most commonly produce actions out in response to some action you received in, that's not actually a requirement! Once you're inside your Epic, use any Observable patterns you desire as long as anything output from the final, returned stream, is an action.
+虽然通常你会响应接收到的 action 而产出 actions，但这不是必须的！一旦进入你的 Epic，使用任何你想使用的 Observable 模式，只要最后返回 action 流即可。  
 
-The actions you emit will be immediately dispatched through the normal `store.dispatch()`, so under the hood redux-observable effectively does `epic(action$, store).subscribe(store.dispatch)`
+你发出的 actions 会通过 `store.dispatch()` 立刻被分发，所以 redux-observable 实际上会做 `epic(action$, store).subscribe(store.dispatch)`
 
-Epics run alongside the normal Redux dispatch channel, **after** the reducers have already received them--so you cannot "swallow" an incoming action. Actions always run through your reducers _before_ your Epics even receive them.
+Epics 运行在正常的 Redux 分发通道上，在 reducers 接受到**之后**，所以你不会 “吞掉” 一个 action。
+在 Epics 实际接收 Actions 前，Actions 将始终贯穿你的 reducers 。
 
-If you let an incoming action pass through, it will create an infinite loop:
+如果你让传入到 action 传出，会造成无限循环:
 
 ```js
-// DO NOT DO THIS
-const actionEpic = (action$) => action$; // creates infinite loop
+// 不要这么做
+const actionEpic = (action$) => action$; // 创建无限循环
 ```
 
-> The pattern of handling side effects this way is similar to the "*process manager*" pattern, sometimes called a ["*saga*"](https://msdn.microsoft.com/en-us/library/jj591569.aspx), but the original definition of [saga is not truly applicable](http://kellabyte.com/2012/05/30/clarifying-the-saga-pattern/). If you're familiar with [redux-saga](https://redux-saga.github.io/redux-saga/), redux-observable is very similar. But because it uses RxJS it is much more declarative and you utilize and expand your existing RxJS abilities.
+> 这种处理副作用的方式和"*过程管理*"模式相似，有些地方也称为["*saga*"](https://msdn.microsoft.com/en-us/library/jj591569.aspx)，但是 [saga 的
+原始定义]并不适用。(http://kellabyte.com/2012/05/30/clarifying-the-saga-pattern/)。如果你熟悉 [redux-saga](https://redux-saga.github.io/redux-saga/), redux-observable 和它很像。但是因为它使用了 RxJS， 所以它是更加声明式的，同时还可以扩展你现有的
+RxJS 能力。
 
+## 一个基本例子
 
-## A Basic Example
-
-> **IMPORTANT:** redux-observable does not add any of the RxJS operators to the `Observable.prototype` so you will need to import the ones you use or import all of them in your entry file.
+> **重要:** redux-observable 并没有给 `Observable.prototype` 添加任何操作符，所以你需要在入口文件添加你使用的或者所有的操作符。
 > 
-> Because there are many ways to add them, our examples will not include any imports. If you want to add every operator, put `import 'rxjs';` in your entry `index.js`. [Learn more](http://redux-observable.js.org/docs/Troubleshooting.html#rxjs-operators-are-missing-eg-typeerror-actionoftypeswitchmap-is-not-a-function).
+> 因为有很多种方式可以添加它们，我们的例子不会包含任何导入。如果你想添加所有的操作符，将 `import 'rxjs';` 添加到你的入口 `index.js`。[Learn more](http://redux-observable.js.org/docs/Troubleshooting.html#rxjs-operators-are-missing-eg-typeerror-actionoftypeswitchmap-is-not-a-function).
 
 
-Let's start with a simple Epic example:
+让我们从一个简单的 Epic 例子开始:
 
 ```js
 const pingEpic = action$ =>
@@ -49,30 +51,30 @@ const pingEpic = action$ =>
 dispatch({ type: 'PING' });
 ```
 
-> Noticed how `action$` has a dollar sign at the end? It's simply a common RxJS convention to identify variables that reference a stream.
+> 注意，为什么 `action$` 是以美元符结尾呢? 这是 RxJS 的基本公约用来引用流。
  
-`pingEpic` will listen for actions of type `PING` and map them to a new action, `PONG`. This example is functionally equivalent to doing this:
+`pingEpic` 会监听类型为 `PING` 的 actions，然后投射为新的 action，`PONG`。这个例子功能上相当于做了这件事情: 
 
 ```js
 dispatch({ type: 'PING' });
 dispatch({ type: 'PONG' });
 ```
 
-> REMEMBER: Epics run alongside the normal Redux dispatch channel, **after** the reducers have already received them. When you map an action to another one, **you are not** preventing the original action from reaching the reducers; that action has already been through them!
+> 牢记: Epics 运行在正常分发渠道旁, 在 reducers 完全接受到它们**之后**。当你将一个 action 投射成另一个 action， **你不会** 阻止原始的 action 到达 reducers; 该 action 已经通过了它!
 
-The real power comes when you need to do something asynchronous. Let's say you want to dispatch `PONG` 1 second after receiving the `PING`:
+真正的力量来自于你需要做一些异步事情。假设我们需要在接受到 `PING` 1秒后分发 `PONG`:
 
 ```js
 const pingEpic = action$ =>
   action$.filter(action => action.type === 'PING')
-    .delay(1000) // Asynchronously wait 1000ms then continue
+    .delay(1000) // 异步等待 1000ms 然后继续
     .mapTo({ type: 'PONG' });
 
-// later...
+// 稍后...
 dispatch({ type: 'PING' });
 ```
 
-Your reducers will receive the original `PING` action, then 1 second later receive the `PONG`.
+你的 reducers 会接收原始的 `PING` action，然后 1 秒后接收 `PONG`。
 
 ```js
 const pingReducer = (state = { isPinging: false }, action) => {
@@ -88,13 +90,12 @@ const pingReducer = (state = { isPinging: false }, action) => {
   }
 };
 ```
-
-Since filtering by a specific action type is so common, the `action$` stream has an `ofType()` operator to reduce that boilerplate:
+因为过滤特定的 action 类型是很常见的需求，`action$` 流拥有 `ofType()` 操作符来减少这种复杂度。
 
 ```js
 const pingEpic = action$ =>
   action$.ofType('PING')
-    .delay(1000) // Asynchronously wait 1000ms then continue
+    .delay(1000) // 异步等待 1000ms 然后继续
     .mapTo({ type: 'PONG' });
 ```
 
@@ -104,9 +105,9 @@ const pingEpic = action$ =>
 
 <a class="jsbin-embed" href="https://jsbin.com/vayoho/embed?js,output&height=500px">View this demo on JSBin</a><script src="https://static.jsbin.com/js/embed.min.js?3.37.0"></script>
 
-## A Real World Example
+## 来着真实世界的例子
 
-Now that we have a general idea of what an Epic looks like, let's continue with a more real-world example:
+现在我们对 Epic 是什么有了大概的了解，让我们继续，看下这个更加真实的例子:
 
 ```js
 import { ajax } from 'rxjs/observable/dom/ajax';
@@ -123,17 +124,17 @@ const fetchUserEpic = action$ =>
         .map(response => fetchUserFulfilled(response))
     );
     
-// later...
+// 稍后...
 dispatch(fetchUser('torvalds'));
 ```
 
-> We're using action creators (aka factories) like `fetchUser` instead of creating the action POJO directly. This is a Redux convention that is totally optional.
+> 我们使用 `fetchUser` action 创建函数(工厂)代替直接创建 action POJO。这是一个完全可选的 Redux 惯例。 
 
-We have a standard Redux action creator `fetchUser`, but also a corresponding Epic to orchestrate the actual AJAX call. When that AJAX call comes back, we map the response to a `FETCH_USER_FULFILLED` action.
+我们用个标准的 Redux action 创建者 `fetchUser`，同样也有一个对应的 Epic 去编排实际的 AJAX 调用。当 AJAX 调用返回时，我们将响应投射为 `FETCH_USER_FULFILLED` action。  
 
-> Remember, Epics take a stream of **actions in** and return a stream of **actions out**. If the RxJS operators and behavior shown so far is unfamiliar to you, you'll definitely want to take some time to [dive deeper into RxJS](http://reactivex.io/rxjs/) before proceeding.
+>记住，Epics 是一个 **actions in** 和 **actions out** 的流。如果你发现 RxJS 操作符和行为如此陌生，在继续之前你应该[深入看看 RxJS](http://reactivex.io/rxjs/)  
 
-You can then update your Store's state in response to that `FETCH_USER_FULFILLED` action:
+在 `FETCH_USER_FULFILLED` action 的响应中，你可以修改你的 Store's state。 
 
 ```js
 const users = (state = {}, action) => {
@@ -157,9 +158,9 @@ const users = (state = {}, action) => {
 
 <a class="jsbin-embed" href="https://jsbin.com/jopuza/embed?js,output&height=500px">View this demo on JSBin</a><script src="https://static.jsbin.com/js/embed.min.js?3.40.2"></script>
 
-## Accessing the Store's State
+## 访问 the Store's State
 
-Your Epics receive a second argument, a light version of Redux store.
+你的 Epics 接收的第二个参数，一个轻量版的 Redux store。 
 
 ```js
 type LightStore = { getState: Function, dispatch: Function };
@@ -167,9 +168,9 @@ type LightStore = { getState: Function, dispatch: Function };
 function (action$: ActionsObservable<Action>, store: LightStore ): ActionsObservable<Action>;
 ```
 
-> This is not a true reference to the full store object. It only contains `store.getState()` and `store.dispatch()`; it [does not currently](https://github.com/reactjs/redux/issues/1833) support `Observable.from(store)`.
+> 这不是完整的 store 对象的引用，只包含了 `store.getState()` 和 `store.dispatch()`; 它[目前不支持](https://github.com/reactjs/redux/issues/1833)`Observable.from(store)`。  
 
-With this, you can call `store.getState()` to synchronously access the current state:
+拥有它，你就可以调用 `store.getState()` 同步获取当前 state:
 
 ```js
 const INCREMENT = 'INCREMENT';
@@ -186,9 +187,9 @@ const incrementIfOddEpic = (action$, store) =>
 // later...
 dispatch(incrementIfOdd());
 ```
-> REMEMBER: When an Epic receives an action, it has already been run through your reducers and the state updated.
+> 记住: 当 Epic 接收到 action, 它已经运行通过你的 reducers 并且 state 被修改了。
 
-Using `store.dispatch()` inside your Epic is a handy escape hatch for quick hacks, but use it sparingly. It's considered an anti-pattern and we may remove it from future releases.
+在 Epic 内部使用 `store.dispatch()` 是一个快速黑客的方便逃生舱，但是节制的使用。这被认为是反模式的并且会被在未来的版本中移除。
 
 ***
 
@@ -196,9 +197,9 @@ Using `store.dispatch()` inside your Epic is a handy escape hatch for quick hack
 
 <a class="jsbin-embed" href="https://jsbin.com/somuvur/embed?js,output&height=500px">View this demo on JSBinn</a><script src="https://static.jsbin.com/js/embed.min.js?3.37.0"></script>
 
-## Combining Epics
+## 结合 Epics
 
-Finally, redux-observable provides a utility called [`combineEpics()`](../api/combineEpics.md) that allows you to easily combine multiple Epics into a single one:
+最后，redux-observable 提供了一个工具方法 `combineEpics()`](../api/combineEpics.md)，该方法运行你轻易的将多个 Epics 结合为一个: 
 
 ```js
 import { combineEpics } from 'redux-observable';
@@ -209,7 +210,7 @@ const rootEpic = combineEpics(
 );
 ```
 
-Note that this is equivalent to:
+等价于:
 
 ```js
 import { merge } from 'rxjs/observable/merge';
@@ -220,6 +221,6 @@ const rootEpic = (action$, store) => merge(
 );
 ```
 
-## Next Steps
+## 下一步
 
-Next, we’ll explore how to [activate your Epics](SettingUpTheMiddleware.md) so they can start listening for actions.
+接下来，我们会探索怎样 [激活 Epics](SettingUpTheMiddleware.md) 才能开始监听 actions。
