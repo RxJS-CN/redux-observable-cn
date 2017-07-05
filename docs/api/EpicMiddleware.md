@@ -1,8 +1,8 @@
 # EpicMiddleware
 
-An instance of the redux-observable middleware.
+edux-observable 中间件的实例.
 
-To create it, pass your root [Epic](../basics/Epics.md) to [`createEpicMiddleware`](createEpicMiddleware.md).
+想要创建它, 传递你的根 [Epic](../basics/Epics.md) 给 [`createEpicMiddleware`](createEpicMiddleware.md).
 
 ### EpicMiddleware Methods
 
@@ -12,10 +12,10 @@ To create it, pass your root [Epic](../basics/Epics.md) to [`createEpicMiddlewar
 
 ### <a id='replaceEpic'></a>[`replaceEpic(nextEpic)`](#replaceEpic)
 
-Replaces the epic currently used by the middleware.
+替换中间件正在使用的 epic。 
 
-It is an advanced API. You might need this if your app implements code splitting and you want to load some of the epics dynamically or you're using hot reloading.
+这是个高阶 API。 如果你想要应用实现代码分割并且想要动态加载 epics 或者使用热更新时，你会需要它们。
 
 #### Arguments
 
-1. `epic` (*Epic*) The next epic for the middleware to use.
+1. `epic` (*Epic*) 中间件要使用的下一个 epic。

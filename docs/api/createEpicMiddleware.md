@@ -1,19 +1,19 @@
 # `createEpicMiddleware(rootEpic, [options])`
 
-`createEpicMiddleware()` is used to create an instance of the actual redux-observable middleware. You provide a single, root Epic.
+`createEpicMiddleware()` 用来创建 redux-observable 中间件的实例。你提供单个根 Epic。
 
 #### Arguments
 
-1. *`rootEpic: Epic`*: The root [Epic](../basics/Epics.md)
-2. *`[options: Object]`*: The optional configuration. Options:
-    * *`dependencies`*: If given, it will be injected as the 3rd argument to all epics.
-    * *`adapter`*: An adapter object which can transform the input / output streams provided to your epics. Usually used to adapt a stream library other than RxJS v5, like [adapter-rxjs-v4](https://github.com/redux-observable/redux-observable-adapter-rxjs-v4) or [adapter-most](https://github.com/redux-observable/redux-observable-adapter-most) Options:
-       * *`input: ActionsObservable => any`*: Transforms the input stream of actions, `ActionsObservable` that is passed to your root Epic (transformation takes place *before* it is passed to the root epic).
-       * *`output: any => Observable`*: Transforms the return value of root Epic (transformation takes place *after* the root epic returned it).
+1. *`rootEpic: Epic`*: 根 [Epic](../basics/Epics.md)
+2. *`[options: Object]`*: 可选的配置. 选项:
+    * *`dependencies`*: 如果提供, 它会以第三个参数注入给所有的 epics.
+    * *`adapter`*: 适配器对象，可以转换 输入／输出流给你的 epics。 通常用来适配 RxJS v5 之外的流库，例如 [adapter-rxjs-v4](https://github.com/redux-observable/redux-observable-adapter-rxjs-v4) 或者 [adapter-most](https://github.com/redux-observable/redux-observable-adapter-most) 选项:
+       * *`input: ActionsObservable => any`*: 转化 actions 输入流, `ActionsObservable` 传递给你的根 Epic (转化发生在传递给根 epic 之前)。
+       * *`output: any => Observable`*: 转化根 Epic 的返回流 (转化发生在根 epic 返回之后)。
 
 #### Returns
 
-(*`MiddlewareAPI`*): An instance of the redux-observable middleware.
+(*`MiddlewareAPI`*): redux-observable 中间件的实例。
 
 #### Example
 

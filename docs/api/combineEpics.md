@@ -1,14 +1,14 @@
 # `combineEpics(...epics)`
 
-`combineEpics()`, as the name suggests, allows you to take multiple epics and combine them into a single one.
+`combineEpics()`, 意如其名, 允许你将多个 epics 合并成单个。
 
 #### Arguments
 
-1. *`...epics: Epic[]`*: The [epics](../basics/Epics.md) to combine.
+1. *`...epics: Epic[]`*: 要合并的 [epics](../basics/Epics.md)。
 
 #### Returns
 
-(*`Epic`*): An Epic that merges the output of every Epic provided and passes along the `ActionsObservable` and redux store as arguments.
+(*`Epic`*): 合并每个 Epic，并提供给它们 `ActionsObservable` 和 redux store 作为参数的 Epic。
 
 #### Example
 
