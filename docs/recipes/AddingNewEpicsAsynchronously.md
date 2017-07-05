@@ -1,6 +1,6 @@
 # Adding New Epics Asynchronously/Lazily
 
-If you are doing code splitting or otherwise want to add an Epic to the middleware after the app is already running, you can do this fairly trivially with composition and standard RxJS.
+如果你正在做代码分隔或者在应用运行过程中你想动态的给中间件添加 Epic，你可以利用标准 RxJS 很简单的做到。 
 
 ```js
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -18,6 +18,6 @@ epic$.next(asyncEpic1);
 epic$.next(asyncEpic2);
 ```
 
-Keep in mind that any existing Epics will be left running as-is. This is not for actual replacement of Epics, like hot reloading.
+牢记，任何存在的 Epics 将会仍然保持运行，这不是真正的 Epics 替换，像热加载。  
 
-Adding new Epics to your root Epic is very safe, but replacing Epics that were already running with a new version can potentially create strange bugs because Epics naturally _may_ maintain state or depend on some external transient state or side effect. To learn more about that, check out the [`replaceEpic(nextEpic)`](HotModuleReplacement.md) method.
+往根 Epic 中添加新的 Epics 十分安全，但是把正在运行的 Epics 替换成新的版本可能会潜在的奇怪的 bugs，因为 Epics 可能会维护状态或者依赖外部瞬时状态或者副作用。想要了解更多，查看 [`replaceEpic(nextEpic)`](HotModuleReplacement.md) 方法。  

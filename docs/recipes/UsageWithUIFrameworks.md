@@ -1,10 +1,11 @@
 # Usage with UI Frameworks
 
-Both redux and redux-observable are UI framework agnostic. Not only can you pick your favorite one, if you decide to change UI frameworks down the road, a majority of your business logic will be in redux + redux-observable so your UI framework is mostly just a view layer/template, making it much easier to switch between them!
+redux 和 redux-observable 都是和 UI 框架无关的。你可以选择自己喜欢的，如果你想将来改变 UI 框架，你主要的业务逻辑将会在 redux + redux-observable 所以
+你的 UI 框架仅仅是一个展现层的模版，尽可能的简单方便替换。
 
 ## JSBin Examples
 
-Here are some JSBins to get a general feel for how you might use redux-observable. Keep in mind that these aren't necessarily suggestions on how you _should_ structure your code.
+这里是一些 JSBins 用来帮你找到使用 redux-observable 的感觉。记住，它们不需要建议你的代码该如何组织。  
 
 * [Using Raw HTML APIs](http://jsbin.com/birogu/edit?js,output)
 * [Using React](http://jsbin.com/jexomi/edit?js,output)

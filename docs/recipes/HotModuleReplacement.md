@@ -1,8 +1,10 @@
 # Hot Module Replacement
 
-Replacing Epics that were already running with a new version can potentially create strange bugs because Epics naturally _may_ maintain some internal state or depend on some external transient state or side effect. Think about how debouncing keeps track, or more insidious before you kick off an AJAX request you put the store into a pending state. This is not unique to redux-observable; every alternative middleware we know of has this problem because it's inherent to the nature of handling side effects.
+替换正在运行的 Epics 为新的版本可能会引起潜在的奇怪 bugs,因为 Epics 可能会维护一些内部的状态或者依赖一些外部的瞬时状态或者副作用。
 
-In practice however, we're unsure if this will notably impact the typical developer and since Hot Module Replacement is only used in local development, we do provide a `replaceEpic(nextEpic)` method that can be used for this purpose.
+想想如何去抖动跟踪，或者取消你将 store 放入阻塞的状态的在 AJAX 请求之前更阴险。这并不是 redux-observable 特有的;每个类似的中间件都会有这个问题因为它和处理副作用是绑定的。
+
+然而实践中，我们并不确定这是否会影响到普通的开发着，因为热替换只发生在本地开发中，我们确实提供了 `replaceEpic(nextEpic)` 方法可用于此目的。
 
 ```js
 import rootEpic from './where-ever-they-are';
@@ -16,7 +18,8 @@ if (module.hot) {
 }
 ```
 
-When you call `replaceEpic` an `@@redux-observable/EPIC_END` action is dispatched before the replacement actually happens. This gives you a **synchronous** opportunity to do any cleanup you may need. You can choose to listen for this action in your Epic itself or in you reducer, where ever it makes the most sense.
+当你调用 `replaceEpic`时， `@@redux-observable/EPIC_END` action 会在替换真实发生之前分发。这给你一个 **同步** 的机会做一些你需要的清理工作。你可以
+选择在 Epic 内部监听这个 action 或者 在 reducer 中监听，总之最有意义的地方。   
 
 #### Inside your Reducer
 
@@ -62,4 +65,4 @@ const fetchUserEpic = action$ =>
     );
 ```
 
-If you use `replaceEpic` and have noticed bugs of any kind (or even if it works wonderfully for you!), [please do report them](https://github.com/redux-observable/redux-observable/issues/new) so we can evaluate the future of this feature!
+如果你使用 `replaceEpic` 并且出现了上文提到的任何种类的 bugs (或者它对你很有效)，[请告诉我们](https://github.com/redux-observable/redux-observable/issues/new) 以便于我们可以评估这个特性的未来！  

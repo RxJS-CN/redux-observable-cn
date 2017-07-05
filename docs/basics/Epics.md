@@ -1,9 +1,9 @@
 # Epics
 
 >##### 不熟悉 Observables/RxJS v5?
-> redux-observable 需要理解 RxJS v5 的 Observables。 如果你是用 RxJS v5 进行响应式编程的新手, 转向 [http://reactivex.io/rxjs/](http://reactivex.io/rxjs/) 先熟悉下。
+> 进入 redux-observable 之前需要理解 RxJS v5 的 Observables。 如果你是用 RxJS v5 进行响应式编程的新手, 转向 [http://reactivex.io/rxjs/](http://reactivex.io/rxjs/) 先熟悉下。
 > 
-> redux-observable (因为 RxJS) 的真正光芒在于处理最为复杂的异步逻辑。如果你对 RxJS 感到不太舒适，你可以考虑使用[redux-thunk](https://github.com/gaearon/redux-thunk) 处理简单异步逻辑，然后使用 redux-observable 处理复杂情况。这样你既可以保持生产力又可以学习 RxJS。redux-thunk 学习和使用起来更简单，这也意味着它远没有那么强大。所以，如果你已经和我们一样喜爱 Rx，你可能会用它来做每一件事情。
+> redux-observable (因为 RxJS) 的真正光芒在于处理最为复杂的异步逻辑。如果你对 RxJS 感到不太舒适，你可以考虑使用[redux-thunk](https://github.com/gaearon/redux-thunk) 处理简单异步逻辑，然后使用 redux-observable 处理复杂情况。这样既可以保持生产力又可以学习 RxJS。redux-thunk 学习和使用起来更简单，这也意味着它远没有那么强大。所以，如果你已经和我们一样喜爱 Rx，你可能会用它来做每一件事情。
 
 **Epic** 是 redux-observable 的核心原语。
 
@@ -19,10 +19,10 @@ function (action$: Observable<Action>, store: Store): Observable<Action>;
 
 你发出的 actions 会通过 `store.dispatch()` 立刻被分发，所以 redux-observable 实际上会做 `epic(action$, store).subscribe(store.dispatch)`
 
-Epics 运行在正常的 Redux 分发通道上，在 reducers 接受到**之后**，所以你不会 “吞掉” 一个 action。
-在 Epics 实际接收 Actions 前，Actions 将始终贯穿你的 reducers 。
+Epics 运行在正常的 Redux 分发通道旁，在 reducers 接受到**之后**，所以不会 “吞掉” 一个 action。
+在 Epics 实际接收 Actions 前，Actions 将始终贯穿你的 reducers。
 
-如果你让传入到 action 传出，会造成无限循环:
+如果你传出 传入的 action ，会造成无限循环:
 
 ```js
 // 不要这么做
@@ -30,7 +30,7 @@ const actionEpic = (action$) => action$; // 创建无限循环
 ```
 
 > 这种处理副作用的方式和"*过程管理*"模式相似，有些地方也称为["*saga*"](https://msdn.microsoft.com/en-us/library/jj591569.aspx)，但是 [saga 的
-原始定义]并不适用。(http://kellabyte.com/2012/05/30/clarifying-the-saga-pattern/)。如果你熟悉 [redux-saga](https://redux-saga.github.io/redux-saga/), redux-observable 和它很像。但是因为它使用了 RxJS， 所以它是更加声明式的，同时还可以扩展你现有的
+原始定义](http://kellabyte.com/2012/05/30/clarifying-the-saga-pattern/)并不适用。如果你熟悉 [redux-saga](https://redux-saga.github.io/redux-saga/), redux-observable 和它很像。但是因为它使用了 RxJS， 所以它是更加声明式的，同时还可以扩展你现有的
 RxJS 能力。
 
 ## 一个基本例子
@@ -47,11 +47,11 @@ const pingEpic = action$ =>
   action$.filter(action => action.type === 'PING')
     .mapTo({ type: 'PONG' });
     
-// later...
+// 稍后...
 dispatch({ type: 'PING' });
 ```
 
-> 注意，为什么 `action$` 是以美元符结尾呢? 这是 RxJS 的基本公约用来引用流。
+> 注意，为什么 `action$` 是以美元符结尾呢? 这是 RxJS 的基本公约用来标示流。
  
 `pingEpic` 会监听类型为 `PING` 的 actions，然后投射为新的 action，`PONG`。这个例子功能上相当于做了这件事情: 
 
@@ -199,7 +199,7 @@ dispatch(incrementIfOdd());
 
 ## 结合 Epics
 
-最后，redux-observable 提供了一个工具方法 `combineEpics()`](../api/combineEpics.md)，该方法运行你轻易的将多个 Epics 结合为一个: 
+最后，redux-observable 提供了一个工具方法 [`combineEpics()`](../api/combineEpics.md)，该方法允许将多个 Epics 轻易的结合为一个: 
 
 ```js
 import { combineEpics } from 'redux-observable';

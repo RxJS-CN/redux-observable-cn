@@ -1,10 +1,11 @@
 # Writing Tests
 
-> Testing async code that creates side effects isn't easy. We're still learning the best way to test Epics. If you have found the perfect way, [do share](https://github.com/redux-observable/redux-observable/issues/new)!
+> 测试异步代码不是很容易的事情。我们仍然在学习测试 Epics 最好的方式。如果你有完美的方案，[请分享](https://github.com/redux-observable/redux-observable/issues/new)! 
 
-If you haven't already set up testing for regular Redux, you'll want to head over to [their documentation](http://redux.js.org/docs/recipes/WritingTests.html) first to familiarize yourself since nearly all of it is applicable.
+如果你对常规 Redux 还没有进行过测试。你需要首先转向[它们的文档](http://redux.js.org/docs/recipes/WritingTests.html),因为几乎所有都是
+适用的。
 
-One approach is to mock the entire Redux store and replace the root Epic between each test.
+一种方式是 mock 完整的 Redux store 并且在每个测试用例中替换根 Epic。
 
 ```js
 import nock from 'nock';
@@ -46,4 +47,5 @@ describe('fetchUserEpic', () => {
 
 ***
 
-If you're particularly adventurous, we've been experimenting with using [RxJS's `TestScheduler`](https://github.com/ReactiveX/rxjs/blob/master/doc/writing-marble-tests.md) along with the [marble diagram helpers](https://github.com/ReactiveX/rxjs/blob/master/doc/writing-marble-tests.md). [Check out a JSBin example](http://jsbin.com/pufima/edit?js,output). We're not quite ready to "suggest" this approach per say, but we'd love feedback or someone interested in helping pave the way!
+如果你是一个特别的冒险者，我们已经试验性的使用[RxJS's `TestScheduler`](https://github.com/ReactiveX/rxjs/blob/master/doc/writing-marble-tests.md) 和 [marble diagram helpers](https://github.com/ReactiveX/rxjs/blob/master/doc/writing-marble-tests.md)
+老实讲，我们现在还不太建议这种方式，但是我们喜欢看到反馈或者某些人可以感兴趣帮助铺路。

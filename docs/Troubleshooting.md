@@ -1,27 +1,28 @@
 # Troubleshooting [![Join the chat at https://gitter.im/redux-observable/redux-observable](https://badges.gitter.im/redux-observable/redux-observable.svg)](https://gitter.im/redux-observable/redux-observable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+这是一个分享公告问题并且找到解决方案的地方。
 
-This is a place to share common problems and solutions to them.  
-
-> If your problem isn't yet listed here or you need other help, please use [Stack Overflow](http://stackoverflow.com/questions/tagged/redux-observable) first with the `redux-observable` tag. If you don't receive a response after a reasonable amount of time, create an issue ticket that includes a link to your Stack Overflow question.
+>如果你的问题没有被在这里列出来或者你需求其他帮助，请首先使用[Stack Overflow](http://stackoverflow.com/questions/tagged/redux-observable)添加 
+`redux-observable` 标签。如果在一个合理的时间段后没有得到响应，创建包含 Stack Overflow 问题链接的 issue   
 >
-> You can also get help in our public [Gitter channel](https://gitter.im/redux-observable/redux-observable)!
+> 你同样可以从公共[Gitter channel]中得到帮助(https://gitter.im/redux-observable/redux-observable)!
 
 
 * * *
 
 ### RxJS operators are missing! e.g. TypeError: action$.ofType(...).switchMap is not a function
 
-RxJS supports the ability to [add operators individually](https://github.com/ReactiveX/rxjs#installation-and-usage) so your bundles remain small. redux-observable honors this by having the `ActionsObservable` extend `Observable` but otherwise not adding any of the core operators to the prototype.
+RxJS 支持[单独添加操作符](https://github.com/ReactiveX/rxjs#installation-and-usage)的能力从而使你的包会很小。
+redux-observable 通过使 `ActionsObservable` 继承 `Observable`，但是没有在原型上添加任何操作符来实现。
 
 #### Add all operators
 
-If you want to instead add all operators, you can import the entire library inside your entry `index.js`:
+如果你想添加所以的操作符, 你可以在你的入口文件 `index.js` 中添加完整的库:
 
 ```js
 import 'rxjs';
 ```
-This will add every core RxJS operator to the `Observable` prototype.
+这会将所有的 RxJS 核心操作符添加到 `Observable` 原型上。
 
 #### Add only the operators you use
 
@@ -38,31 +39,31 @@ import { switchMap } from 'rxjs/operator/switchMap';
 action$.ofType(...)::switchMap(...);
 ```
 
-There are several ways to do this, so we don't suggest any particular one in the docs. Check out the [RxJS documentation on this](https://github.com/ReactiveX/rxjs#installation-and-usage).
+有很多种方法可以做到，所以我们在文档中并没有特别的推荐某个。产看 [RxJS 文档]
+(https://github.com/ReactiveX/rxjs#installation-and-usage).
 
-If you use the `'rxjs/add/operator/name'` technique, you may find it helpful to create a single file where you place all of these so you don't have to import the same operators repeatedly.
+如果巧妙的使用了 `'rxjs/add/operator/name'`，你可能会发现将所有依赖的操作符引用放到创建的单个文件中，你就不会引入同一个操作符多次。 
 
 * * *
 
 ### TypeError: object is not observable
 
-This almost always means somewhere you're passing an object to an RxJS operator that isn't observable-like. That means it's not an Observable, Promise, Array, doesn't support `Symbol.observable`, etc.
+这通常意味着你给 RxJS 操作符传递了非 observable-like 的对象。这意味不是 Observable，Promise，Array，不支持 `Symbol.observable` 等等。    
 
-The following are some examples of that.
+下面是一些例子
 
 #### (action$, store) => Observable.from(store)
 
-The store provided to your Epics is the same one provided by redux to the middleware. It is not a full version of the store, so it does not support the `Symbol.observable` interop point to allow `Observable.from(store)`. You can [learn more about this here](https://github.com/redux-observable/redux-observable/issues/56).
+提供给 Epics 的 store 和 redux 给中间件的 store 相同。并不是完全版本的 store, 所以它不支持 `Symbol.observable` 从而不允许 `Observable.from(store)`。你可以 [看这里学到更多](https://github.com/redux-observable/redux-observable/issues/56).
 
 * * *
 
 ### TypeError: Cannot read property 'subscribe' of undefined
 
-This almost always means you're using an operator somewhere that expects to be provided with an observable but you instead did not give it anything at all. Often, you may be passing a variable but it is unknowingly set to `undefined`, so step through a debugger to confirm.
-
+这大多数意味着你正在使用期望提供 observable 的操作符但是你什么也没有提供。经常，你提供了变量但是被某些未知设置为 `undefined`，所以 debugger 进一步确认。   
 #### Happens from `combineEpics()`
 
-Usually this means you're not returning an observable from one or more of your Epics. Often this is just a missing `return`.
+通常，这意味着你的某个 Epics 没有返回 observable。很多情况下都是缺失了 `return`。
 
 ```js
 const myEpic = action$ => { // MISSING EXPLICIT RETURN!
@@ -72,7 +73,7 @@ const myEpic = action$ => { // MISSING EXPLICIT RETURN!
 
 ### this is set to Window
 
-If you are organizing your epics into a class. (E.g. in order to benefit from Angular 2 dependency injection), you might have made the mistake of using class methods:
+如果你将 epics 放到类中。(例如，为了获取 Angular 2 依赖注入的好处)，你可能在使用类方法的时候遇到错误: 
 
 ```typescript
 class TooFancy {
@@ -82,7 +83,7 @@ class TooFancy {
   }
 }
 ```
-follow the docs and:
+修改为:
 
 ```typescript
 class TooFancy {
@@ -93,12 +94,13 @@ class TooFancy {
 }
 ```
 
-See https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions (Arrow functions used as methods)
+察看 https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions (箭头函数)
 
 * * *
 
 ## Something else doesn’t work
 
-If you think your issue is a bug with redux-observable, [create an issue](https://github.com/redux-observable/redux-observable/issues);  
+如果你认为你的 issue 是 redux-observable 的一个 bug，[创建 issue](https://github.com/redux-observable/redux-observable/issues);  
 
-If you figure it out, [edit this document](https://github.com/redux-observable/redux-observable/edit/master/docs/Troubleshooting.md) as a courtesy to the next person having the same problem.
+如果你弄明白了，[编辑该文档](https://github.com/redux-observable/redux-observable/edit/master/docs/Troubleshooting.md) 这样对下个遇到同样问题
+的人很礼貌。

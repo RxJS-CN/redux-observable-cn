@@ -1,8 +1,8 @@
 # Cancellation
 
-Cancelling some async side effects is a common requirement of Epics. While there are several ways of doing this depending on your requirements, the most common way is to have your application dispatch a cancellation action and listen for it inside your Epic.
+取消一些异步行为是 Epics 的最基本需求。虽然有很多种方式可以做到这一点，这取决于你的需求，最常见的方式是让应用程序分发取消 action 然后在 Epic 内部监听。 
 
-This can be done with the [`.takeUntil()`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-takeUntil) RxJS operator:
+可以用 RxJS 的操作符 [`.takeUntil()`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-takeUntil)来完成 :
 
 ```js
 import { ajax } from 'rxjs/observable/dom/ajax';
@@ -16,9 +16,9 @@ const fetchUserEpic = action$ =>
     );
 ```
 
-Here we placed the `.takeUntil()` inside our [`.mergeMap()`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-mergeMap), but after our AJAX call; this is important because we want to cancel only the AJAX request, not stop the Epic from listening for any future actions. Isolating your observable chains like this is an important concept you will use often. If this isn't clear, you should consider spending some time getting intimately familiar with RxJS and generally how operator chaining works. Ben Lesh [has a great video that explains how Observables work](https://www.youtube.com/watch?v=3LKMwkuK0ZE) and even covers isolating your chains!
+这里我们将 `.takeUntil()` 放到[`.mergeMap()`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-mergeMap)内部, 并且在 AJAX 调用之后; 这很重要因为我们想要取消的是 AJAX 请求，而不是停止 Epic 监听任何未来的 actions。 像这样隔离 observable 链将是很重要的概念你会经常使用。如果你不是很明白，你应该花点时间尽快的熟悉 RxJS 和 操作符链通常是如何工作的。 Ben Lesh [有一个很棒的演讲，解释了 Observables 是如何工作的](https://www.youtube.com/watch?v=3LKMwkuK0ZE) 同时覆盖到了隔离链!
 
-> This example uses `mergeMap` (aka `flatMap`), which means it allows multiple concurrent `FETCH_USER` requests. If you instead want to **cancel** any pending request and instead switch to the latest one, you can use the [`switchMap`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-switchMap) operator.
+> 这个例子使用了 `mergeMap` (别名 `flatMap`)，它允许多个并行的 `FETCH_USER` 请求。如果你想取消任何请求然后选择最近的一个，你可以使用 [`switchMap`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-switchMap)操作符。  
 
 ***
 
@@ -27,13 +27,15 @@ Here we placed the `.takeUntil()` inside our [`.mergeMap()`](http://reactivex.io
 <a class="jsbin-embed" href="https://jsbin.com/fivaca/embed?js,output&height=500px">View this demo on JSBin</a><script src="https://static.jsbin.com/js/embed.min.js?3.37.0"></script>
 
 
-## Cancel and Do Something Else (Emit a Different Action)
+## 取消然后做一些其他的事情 (发出另一个 Action)
 
-Sometimes you want to not only cancel a side effect (such as an AJAX call), _but also_ do something else, like emit a totally different action.
+有时候你想不仅仅取消像 AJAX 调用这种副作用，同时还要做一些其他事情，例如发出完全不同的 action。
 
-You can achieve that using the aptly named [`race`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-race) operator. It allows you to literally "race" between streams; whichever one emits a value first wins! The losing streams are unsubscribed, cancelling any operation they were performing.
+你可以通过使用 [`race`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-race) 操作符来达到这个目的。
+它允许你使得流之间进行比赛;谁先发出值谁获胜！失败的流会被取消订阅，取消它执行的任何操作。
 
-For example, let's say that we make an AJAX call when someone dispatches `FETCH_USER`, but if someone dispatches `FETCH_USER_CANCELLED` we cancel that pending AJAX request and instead emit a totally different action - in this case, to increment a counter:
+例如，当某人分发 `FETCH_USER` 时我们会执行一个 AJAX 调用，但是如果某人分发 `FETCH_USER_CANCELLED` 我们会取消 AJAX 请求并且发出一个完全不同的 action 做为代替，在本例中，增加一个计数: 
+
 
 ```js
 import { ajax } from 'rxjs/observable/dom/ajax';
@@ -51,6 +53,7 @@ const fetchUserEpic = action$ =>
     );
 ```
 
-We also need to use `.take(1)`, because we only want to listen for the cancellation action _once_ while we're racing the AJAX call.
+我们同样也要使用 `.take(1)`，因为当我们和 AJAX 调用竞赛时只想监听取消 action 一次。  
 
-> This brings up a worthwhile consideration: instead of following up on the cancellation event with a separate action, could you just idiomatically repurpose the original cancellation action being absorbed by your reducers? In other words, is it better to rely on a single action that triggers both the cancellation itself, and what happens afterward, or to define two unrelated actions that reflect your intent? Optimal use cases vary from one implementation to another.
+> 这引发了一个值得深思的问题: 是否可以惯用原始取消 action 被 reducers 吸收，而不是用一个单独的 action 追踪取消事件？换句话说，是不是依赖于单个同时触发
+取消本身和后来会发生什么或者定义两个独立的 actions 更能反映你的本意？  

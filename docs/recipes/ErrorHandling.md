@@ -1,8 +1,9 @@
 # Error Handling
 
-Handling errors in side effects like AJAX calls is a common requirement of Epics. While there are several ways of doing this depending on your requirements, the most common way is to simply catch them inside your Epic and emit an action with the error information so you can display or log it.
+在 Epics 中处理像 AJAX 调用这种副作用中的错误是一个很常见的需求。尽管有多种方式可以实现，这取决于你的需求，最常见的方式是在 Epic 内部捕获错误并且发出
+带有错误信息的 action 便于展现或者日志记录。
 
-This can be done with the `.catch()` RxJS operator:
+这可以通过 RxJS 的操作符 `.catch()` 来完成:
 
 ```js
 import { ajax } from 'rxjs/observable/dom/ajax';
@@ -20,7 +21,7 @@ const fetchUserEpic = action$ =>
     );
 ```
 
-Here we placed the `.catch()` inside our `.mergeMap()`, but after our AJAX call; this is important because if we let the error reach the `action$.ofType()`, it will terminate it and no longer listen for new actions.
+这里我们将 `.catch()` 放到了 `.mergeMap()` 内部，AJAX 调用的后面; 这很重要因为如果让错误到达 `action$.ofType()`，epic 会终止并且不会监听任何 actions。
 
 ***
 

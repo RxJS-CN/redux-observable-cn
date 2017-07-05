@@ -1,12 +1,12 @@
-# Setting Up The Middleware
+# 设置中间件
 
-Now that we know what [Epics](Epics.md) are, we need to provide them to the redux-observable middleware so they can start listening for actions.
+现在我们了解了什么是[Epics](Epics.md), 我们需要将其提供给 redux-observable 中间件从而使它可以开始监听 actions。
 
-## Root Epic
+## 根 Epic
 
-Similar to redux requiring a single root Reducer, redux-observable requires a single root Epic. As we [learned previously](Epics.md), we can use `combineEpics()` to accomplish this.
+和 redux 需要单个根 Reducer 相似，redux-observable 需要单个根 Epic。正如我们在[之前学过](Epics.md)的，可以使用 `combineEpics()` 来完成它。 
 
-We recommend importing all of your Epics into a single file, which then exports the root Epic and the root Reducer.
+我们建议将所有的 Epics 导入到单个文件中，然后导出根 Epic 和 根 Reducer。
 
 ### redux/modules/root.js
 
@@ -27,11 +27,11 @@ export const rootReducer = combineReducers({
 });
 ```
 
-> This pattern is an extension of the [Ducks Modular Redux pattern](https://github.com/erikras/ducks-modular-redux).
+> 这个模式继承自 [Ducks Modular Redux pattern](https://github.com/erikras/ducks-modular-redux).
 
-## Configuring The Store
+## 配置 Store
 
-Now create an instance of the redux-observable middleware, passing in the newly created root Epic.
+现在创建 redux-observable 中间件的实例，传递最新的根 Epic。 
 
 ```js
 import { createEpicMiddleware } from 'redux-observable';
@@ -40,7 +40,7 @@ import { rootEpic } from './modules/root';
 const epicMiddleware = createEpicMiddleware(rootEpic);
 ```
 
-Integrate the code above with your existing Store configuration so that it looks like this:
+将上面的代码和你已经存在的 Store 配置像下面这样集成。
 
 ### redux/configureStore.js
 
@@ -64,7 +64,7 @@ export default function configureStore() {
 
 ## Redux DevTools
 
-To enable Redux DevTools Extension, just use `window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__` or [import `redux-devtools-extension` npm package](https://github.com/zalmoxisus/redux-devtools-extension#13-use-redux-devtools-extension-package-from-npm).
+为了开启 Redux DevTools 扩展，使用 `window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__` 或者 [import `redux-devtools-extension` npm package](https://github.com/zalmoxisus/redux-devtools-extension#13-use-redux-devtools-extension-package-from-npm)。
 
 ```js
 import { compose } from 'redux'; // and your other imports from before
