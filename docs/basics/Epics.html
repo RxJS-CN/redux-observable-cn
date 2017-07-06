@@ -1,0 +1,672 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Epics · redux-observable</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+    <link rel="stylesheet" type="text/css" href="../../website/style.css" />
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="SettingUpTheMiddleware.html" />
+    
+    
+    <link rel="prev" href="../../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">README</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Basics</li>
+        
+        
+    
+        <li class="chapter active" data-level="2.1" data-path="Epics.html">
+            
+                <a href="Epics.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Epics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="SettingUpTheMiddleware.html">
+            
+                <a href="SettingUpTheMiddleware.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    Setting Up The Middleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Recipes</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../recipes/Cancellation.html">
+            
+                <a href="../recipes/Cancellation.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    Cancellation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../recipes/ErrorHandling.html">
+            
+                <a href="../recipes/ErrorHandling.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    Error Handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../recipes/InjectingDependenciesIntoEpics.html">
+            
+                <a href="../recipes/InjectingDependenciesIntoEpics.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    Injecting Dependencies Into Epics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../recipes/WritingTests.html">
+            
+                <a href="../recipes/WritingTests.html">
+            
+                    
+                        <b>3.4.</b>
+                    
+                    Writing Tests
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../recipes/UsageWithUIFrameworks.html">
+            
+                <a href="../recipes/UsageWithUIFrameworks.html">
+            
+                    
+                        <b>3.5.</b>
+                    
+                    Usage with UI Frameworks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../recipes/AddingNewEpicsAsynchronously.html">
+            
+                <a href="../recipes/AddingNewEpicsAsynchronously.html">
+            
+                    
+                        <b>3.6.</b>
+                    
+                    Adding New Epics Asynchronously
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../recipes/HotModuleReplacement.html">
+            
+                <a href="../recipes/HotModuleReplacement.html">
+            
+                    
+                        <b>3.7.</b>
+                    
+                    Hot Module Replacement
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Help</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../FAQ.html">
+            
+                <a href="../FAQ.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../Troubleshooting.html">
+            
+                <a href="../Troubleshooting.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">API Reference</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../api/createEpicMiddleware.html">
+            
+                <a href="../api/createEpicMiddleware.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    createEpicMiddleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../api/combineEpics.html">
+            
+                <a href="../api/combineEpics.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    combineEpics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../api/EpicMiddleware.html">
+            
+                <a href="../api/EpicMiddleware.html">
+            
+                    
+                        <b>5.3.</b>
+                    
+                    EpicMiddleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Epics</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="epics">Epics</h1>
+<blockquote>
+<h5 id="&#x4E0D;&#x719F;&#x6089;-observablesrxjs-v5">&#x4E0D;&#x719F;&#x6089; Observables/RxJS v5?</h5>
+<p>&#x8FDB;&#x5165; redux-observable &#x4E4B;&#x524D;&#x9700;&#x8981;&#x7406;&#x89E3; RxJS v5 &#x7684; Observables&#x3002; &#x5982;&#x679C;&#x4F60;&#x662F;&#x7528; RxJS v5 &#x8FDB;&#x884C;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x65B0;&#x624B;, &#x8F6C;&#x5411; <a href="http://reactivex.io/rxjs/" target="_blank">http://reactivex.io/rxjs/</a> &#x5148;&#x719F;&#x6089;&#x4E0B;&#x3002;</p>
+<p>redux-observable (&#x56E0;&#x4E3A; RxJS) &#x7684;&#x771F;&#x6B63;&#x5149;&#x8292;&#x5728;&#x4E8E;&#x5904;&#x7406;&#x6700;&#x4E3A;&#x590D;&#x6742;&#x7684;&#x5F02;&#x6B65;&#x903B;&#x8F91;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5BF9; RxJS &#x611F;&#x5230;&#x4E0D;&#x592A;&#x8212;&#x9002;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528;<a href="https://github.com/gaearon/redux-thunk" target="_blank">redux-thunk</a> &#x5904;&#x7406;&#x7B80;&#x5355;&#x5F02;&#x6B65;&#x903B;&#x8F91;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; redux-observable &#x5904;&#x7406;&#x590D;&#x6742;&#x60C5;&#x51B5;&#x3002;&#x8FD9;&#x6837;&#x65E2;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x751F;&#x4EA7;&#x529B;&#x53C8;&#x53EF;&#x4EE5;&#x5B66;&#x4E60; RxJS&#x3002;redux-thunk &#x5B66;&#x4E60;&#x548C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7B80;&#x5355;&#xFF0C;&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x7740;&#x5B83;&#x8FDC;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x5F3A;&#x5927;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7ECF;&#x548C;&#x6211;&#x4EEC;&#x4E00;&#x6837;&#x559C;&#x7231; Rx&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x5B83;&#x6765;&#x505A;&#x6BCF;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#x3002;</p>
+</blockquote>
+<p><strong>Epic</strong> &#x662F; redux-observable &#x7684;&#x6838;&#x5FC3;&#x539F;&#x8BED;&#x3002;</p>
+<p>&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x63A5;&#x6536; actions &#x6D41;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x5E76;&#x4E14;&#x8FD4;&#x56DE; actions &#x6D41;&#x3002; <strong>Actions &#x5165;, actions &#x51FA;.</strong></p>
+<p>&#x5B83;&#x7684;&#x7B7E;&#x540D;&#x5982;&#x4E0B;:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token punctuation">(</span>action$<span class="token punctuation">:</span> Observable<span class="token operator">&lt;</span>Action<span class="token operator">&gt;</span><span class="token punctuation">,</span> store<span class="token punctuation">:</span> Store<span class="token punctuation">)</span><span class="token punctuation">:</span> Observable<span class="token operator">&lt;</span>Action<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x867D;&#x7136;&#x901A;&#x5E38;&#x4F60;&#x4F1A;&#x54CD;&#x5E94;&#x63A5;&#x6536;&#x5230;&#x7684; action &#x800C;&#x4EA7;&#x51FA; actions&#xFF0C;&#x4F46;&#x8FD9;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF01;&#x4E00;&#x65E6;&#x8FDB;&#x5165;&#x4F60;&#x7684; Epic&#xFF0C;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x4F60;&#x60F3;&#x4F7F;&#x7528;&#x7684; Observable &#x6A21;&#x5F0F;&#xFF0C;&#x53EA;&#x8981;&#x6700;&#x540E;&#x8FD4;&#x56DE; action &#x6D41;&#x5373;&#x53EF;&#x3002;  </p>
+<p>&#x4F60;&#x53D1;&#x51FA;&#x7684; actions &#x4F1A;&#x901A;&#x8FC7; <code>store.dispatch()</code> &#x7ACB;&#x523B;&#x88AB;&#x5206;&#x53D1;&#xFF0C;&#x6240;&#x4EE5; redux-observable &#x5B9E;&#x9645;&#x4E0A;&#x4F1A;&#x505A; <code>epic(action$, store).subscribe(store.dispatch)</code></p>
+<p>Epics &#x8FD0;&#x884C;&#x5728;&#x6B63;&#x5E38;&#x7684; Redux &#x5206;&#x53D1;&#x901A;&#x9053;&#x65C1;&#xFF0C;&#x5728; reducers &#x63A5;&#x53D7;&#x5230;<strong>&#x4E4B;&#x540E;</strong>&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A; &#x201C;&#x541E;&#x6389;&#x201D; &#x4E00;&#x4E2A; action&#x3002;
+&#x5728; Epics &#x5B9E;&#x9645;&#x63A5;&#x6536; Actions &#x524D;&#xFF0C;Actions &#x5C06;&#x59CB;&#x7EC8;&#x8D2F;&#x7A7F;&#x4F60;&#x7684; reducers&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x4F20;&#x51FA; &#x4F20;&#x5165;&#x7684; action &#xFF0C;&#x4F1A;&#x9020;&#x6210;&#x65E0;&#x9650;&#x5FAA;&#x73AF;:</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x4E0D;&#x8981;&#x8FD9;&#x4E48;&#x505A;</span>
+<span class="token keyword">const</span> actionEpic <span class="token operator">=</span> <span class="token punctuation">(</span>action$<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> action$<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// &#x521B;&#x5EFA;&#x65E0;&#x9650;&#x5FAA;&#x73AF;</span>
+</code></pre>
+<blockquote>
+<p>&#x8FD9;&#x79CD;&#x5904;&#x7406;&#x526F;&#x4F5C;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x548C;&quot;<em>&#x8FC7;&#x7A0B;&#x7BA1;&#x7406;</em>&quot;&#x6A21;&#x5F0F;&#x76F8;&#x4F3C;&#xFF0C;&#x6709;&#x4E9B;&#x5730;&#x65B9;&#x4E5F;&#x79F0;&#x4E3A;<a href="https://msdn.microsoft.com/en-us/library/jj591569.aspx" target="_blank">&quot;<em>saga</em>&quot;</a>&#xFF0C;&#x4F46;&#x662F; <a href="http://kellabyte.com/2012/05/30/clarifying-the-saga-pattern/" target="_blank">saga &#x7684;
+&#x539F;&#x59CB;&#x5B9A;&#x4E49;</a>&#x5E76;&#x4E0D;&#x9002;&#x7528;&#x3002;&#x5982;&#x679C;&#x4F60;&#x719F;&#x6089; <a href="https://redux-saga.github.io/redux-saga/" target="_blank">redux-saga</a>, redux-observable &#x548C;&#x5B83;&#x5F88;&#x50CF;&#x3002;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x4F7F;&#x7528;&#x4E86; RxJS&#xFF0C; &#x6240;&#x4EE5;&#x5B83;&#x662F;&#x66F4;&#x52A0;&#x58F0;&#x660E;&#x5F0F;&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x53EF;&#x4EE5;&#x6269;&#x5C55;&#x4F60;&#x73B0;&#x6709;&#x7684;
+RxJS &#x80FD;&#x529B;&#x3002;</p>
+</blockquote>
+<h2 id="&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x4F8B;&#x5B50;">&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x4F8B;&#x5B50;</h2>
+<blockquote>
+<p><strong>&#x91CD;&#x8981;:</strong> redux-observable &#x5E76;&#x6CA1;&#x6709;&#x7ED9; <code>Observable.prototype</code> &#x6DFB;&#x52A0;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5728;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x6216;&#x8005;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x7B26;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x6709;&#x5F88;&#x591A;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x5B83;&#x4EEC;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x4E0D;&#x4F1A;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x5BFC;&#x5165;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x6DFB;&#x52A0;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5C06; <code>import &apos;rxjs&apos;;</code> &#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684;&#x5165;&#x53E3; <code>index.js</code>&#x3002;<a href="http://redux-observable.js.org/docs/Troubleshooting.html#rxjs-operators-are-missing-eg-typeerror-actionoftypeswitchmap-is-not-a-function" target="_blank">Learn more</a>.</p>
+</blockquote>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; Epic &#x4F8B;&#x5B50;&#x5F00;&#x59CB;:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> pingEpic <span class="token operator">=</span> action$ <span class="token operator">=</span><span class="token operator">&gt;</span>
+  action$<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>action <span class="token operator">=</span><span class="token operator">&gt;</span> action<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">&apos;PING&apos;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">mapTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;PONG&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// &#x7A0D;&#x540E;...</span>
+<span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;PING&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48; <code>action$</code> &#x662F;&#x4EE5;&#x7F8E;&#x5143;&#x7B26;&#x7ED3;&#x5C3E;&#x5462;? &#x8FD9;&#x662F; RxJS &#x7684;&#x57FA;&#x672C;&#x516C;&#x7EA6;&#x7528;&#x6765;&#x6807;&#x793A;&#x6D41;&#x3002;</p>
+</blockquote>
+<p><code>pingEpic</code> &#x4F1A;&#x76D1;&#x542C;&#x7C7B;&#x578B;&#x4E3A; <code>PING</code> &#x7684; actions&#xFF0C;&#x7136;&#x540E;&#x6295;&#x5C04;&#x4E3A;&#x65B0;&#x7684; action&#xFF0C;<code>PONG</code>&#x3002;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x529F;&#x80FD;&#x4E0A;&#x76F8;&#x5F53;&#x4E8E;&#x505A;&#x4E86;&#x8FD9;&#x4EF6;&#x4E8B;&#x60C5;: </p>
+<pre class="language-"><code class="lang-js"><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;PING&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;PONG&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>&#x7262;&#x8BB0;: Epics &#x8FD0;&#x884C;&#x5728;&#x6B63;&#x5E38;&#x5206;&#x53D1;&#x6E20;&#x9053;&#x65C1;, &#x5728; reducers &#x5B8C;&#x5168;&#x63A5;&#x53D7;&#x5230;&#x5B83;&#x4EEC;<strong>&#x4E4B;&#x540E;</strong>&#x3002;&#x5F53;&#x4F60;&#x5C06;&#x4E00;&#x4E2A; action &#x6295;&#x5C04;&#x6210;&#x53E6;&#x4E00;&#x4E2A; action&#xFF0C; <strong>&#x4F60;&#x4E0D;&#x4F1A;</strong> &#x963B;&#x6B62;&#x539F;&#x59CB;&#x7684; action &#x5230;&#x8FBE; reducers; &#x8BE5; action &#x5DF2;&#x7ECF;&#x901A;&#x8FC7;&#x4E86;&#x5B83;!</p>
+</blockquote>
+<p>&#x771F;&#x6B63;&#x7684;&#x529B;&#x91CF;&#x6765;&#x81EA;&#x4E8E;&#x4F60;&#x9700;&#x8981;&#x505A;&#x4E00;&#x4E9B;&#x5F02;&#x6B65;&#x4E8B;&#x60C5;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x63A5;&#x53D7;&#x5230; <code>PING</code> 1&#x79D2;&#x540E;&#x5206;&#x53D1; <code>PONG</code>:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> pingEpic <span class="token operator">=</span> action$ <span class="token operator">=</span><span class="token operator">&gt;</span>
+  action$<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>action <span class="token operator">=</span><span class="token operator">&gt;</span> action<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">&apos;PING&apos;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &#x5F02;&#x6B65;&#x7B49;&#x5F85; 1000ms &#x7136;&#x540E;&#x7EE7;&#x7EED;</span>
+    <span class="token punctuation">.</span><span class="token function">mapTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;PONG&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// &#x7A0D;&#x540E;...</span>
+<span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;PING&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x4F60;&#x7684; reducers &#x4F1A;&#x63A5;&#x6536;&#x539F;&#x59CB;&#x7684; <code>PING</code> action&#xFF0C;&#x7136;&#x540E; 1 &#x79D2;&#x540E;&#x63A5;&#x6536; <code>PONG</code>&#x3002;</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> pingReducer <span class="token operator">=</span> <span class="token punctuation">(</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> isPinging<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">&apos;PING&apos;</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> isPinging<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token string">&apos;PONG&apos;</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> isPinging<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x56E0;&#x4E3A;&#x8FC7;&#x6EE4;&#x7279;&#x5B9A;&#x7684; action &#x7C7B;&#x578B;&#x662F;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x9700;&#x6C42;&#xFF0C;<code>action$</code> &#x6D41;&#x62E5;&#x6709; <code>ofType()</code> &#x64CD;&#x4F5C;&#x7B26;&#x6765;&#x51CF;&#x5C11;&#x8FD9;&#x79CD;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> pingEpic <span class="token operator">=</span> action$ <span class="token operator">=</span><span class="token operator">&gt;</span>
+  action$<span class="token punctuation">.</span><span class="token function">ofType</span><span class="token punctuation">(</span><span class="token string">&apos;PING&apos;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &#x5F02;&#x6B65;&#x7B49;&#x5F85; 1000ms &#x7136;&#x540E;&#x7EE7;&#x7EED;</span>
+    <span class="token punctuation">.</span><span class="token function">mapTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;PONG&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<hr>
+<h3 id="try-it-live">Try It Live!</h3>
+<p><a class="jsbin-embed" href="https://jsbin.com/vayoho/embed?js,output&amp;height=500px" target="_blank">View this demo on JSBin</a><script src="https://static.jsbin.com/js/embed.min.js?3.37.0"></script></p>
+<h2 id="&#x6765;&#x7740;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x7684;&#x4F8B;&#x5B50;">&#x6765;&#x7740;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x7684;&#x4F8B;&#x5B50;</h2>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5BF9; Epic &#x662F;&#x4EC0;&#x4E48;&#x6709;&#x4E86;&#x5927;&#x6982;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#xFF0C;&#x770B;&#x4E0B;&#x8FD9;&#x4E2A;&#x66F4;&#x52A0;&#x771F;&#x5B9E;&#x7684;&#x4F8B;&#x5B50;:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> ajax <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;rxjs/observable/dom/ajax&apos;</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// action creators</span>
+<span class="token keyword">const</span> fetchUser <span class="token operator">=</span> username <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> FETCH_USER<span class="token punctuation">,</span> payload<span class="token punctuation">:</span> username <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> fetchUserFulfilled <span class="token operator">=</span> payload <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> FETCH_USER_FULFILLED<span class="token punctuation">,</span> payload <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// epic</span>
+<span class="token keyword">const</span> fetchUserEpic <span class="token operator">=</span> action$ <span class="token operator">=</span><span class="token operator">&gt;</span>
+  action$<span class="token punctuation">.</span><span class="token function">ofType</span><span class="token punctuation">(</span>FETCH_USER<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">mergeMap</span><span class="token punctuation">(</span>action <span class="token operator">=</span><span class="token operator">&gt;</span>
+      ajax<span class="token punctuation">.</span><span class="token function">getJSON</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`https://api.github.com/users/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>action<span class="token punctuation">.</span>payload<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>response <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">fetchUserFulfilled</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// &#x7A0D;&#x540E;...</span>
+<span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">fetchUser</span><span class="token punctuation">(</span><span class="token string">&apos;torvalds&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>fetchUser</code> action &#x521B;&#x5EFA;&#x51FD;&#x6570;(&#x5DE5;&#x5382;)&#x4EE3;&#x66FF;&#x76F4;&#x63A5;&#x521B;&#x5EFA; action POJO&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x5168;&#x53EF;&#x9009;&#x7684; Redux &#x60EF;&#x4F8B;&#x3002; </p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x7528;&#x4E2A;&#x6807;&#x51C6;&#x7684; Redux action &#x521B;&#x5EFA;&#x8005; <code>fetchUser</code>&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684; Epic &#x53BB;&#x7F16;&#x6392;&#x5B9E;&#x9645;&#x7684; AJAX &#x8C03;&#x7528;&#x3002;&#x5F53; AJAX &#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x54CD;&#x5E94;&#x6295;&#x5C04;&#x4E3A; <code>FETCH_USER_FULFILLED</code> action&#x3002;  </p>
+<blockquote>
+<p>&#x8BB0;&#x4F4F;&#xFF0C;Epics &#x662F;&#x4E00;&#x4E2A; <strong>actions in</strong> &#x548C; <strong>actions out</strong> &#x7684;&#x6D41;&#x3002;&#x5982;&#x679C;&#x4F60;&#x53D1;&#x73B0; RxJS &#x64CD;&#x4F5C;&#x7B26;&#x548C;&#x884C;&#x4E3A;&#x5982;&#x6B64;&#x964C;&#x751F;&#xFF0C;&#x5728;&#x7EE7;&#x7EED;&#x4E4B;&#x524D;&#x4F60;&#x5E94;&#x8BE5;<a href="http://reactivex.io/rxjs/" target="_blank">&#x6DF1;&#x5165;&#x770B;&#x770B; RxJS</a>  </p>
+</blockquote>
+<p>&#x5728; <code>FETCH_USER_FULFILLED</code> action &#x7684;&#x54CD;&#x5E94;&#x4E2D;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x4F60;&#x7684; Store&apos;s state&#x3002; </p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token punctuation">(</span>state <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> FETCH_USER_FULFILLED<span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>state<span class="token punctuation">,</span>
+        <span class="token comment" spellcheck="true">// `login` is the username</span>
+        <span class="token punctuation">[</span>action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>login<span class="token punctuation">]</span><span class="token punctuation">:</span> action<span class="token punctuation">.</span>payload
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<hr>
+<h3 id="try-it-live">Try It Live!</h3>
+<p><a class="jsbin-embed" href="https://jsbin.com/jopuza/embed?js,output&amp;height=500px" target="_blank">View this demo on JSBin</a><script src="https://static.jsbin.com/js/embed.min.js?3.40.2"></script></p>
+<h2 id="&#x8BBF;&#x95EE;-the-stores-state">&#x8BBF;&#x95EE; the Store&apos;s State</h2>
+<p>&#x4F60;&#x7684; Epics &#x63A5;&#x6536;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x7248;&#x7684; Redux store&#x3002; </p>
+<pre class="language-"><code class="lang-js">type LightStore <span class="token operator">=</span> <span class="token punctuation">{</span> getState<span class="token punctuation">:</span> Function<span class="token punctuation">,</span> dispatch<span class="token punctuation">:</span> Function <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token punctuation">(</span>action$<span class="token punctuation">:</span> ActionsObservable<span class="token operator">&lt;</span>Action<span class="token operator">&gt;</span><span class="token punctuation">,</span> store<span class="token punctuation">:</span> LightStore <span class="token punctuation">)</span><span class="token punctuation">:</span> ActionsObservable<span class="token operator">&lt;</span>Action<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>&#x8FD9;&#x4E0D;&#x662F;&#x5B8C;&#x6574;&#x7684; store &#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x53EA;&#x5305;&#x542B;&#x4E86; <code>store.getState()</code> &#x548C; <code>store.dispatch()</code>; &#x5B83;<a href="https://github.com/reactjs/redux/issues/1833" target="_blank">&#x76EE;&#x524D;&#x4E0D;&#x652F;&#x6301;</a><code>Observable.from(store)</code>&#x3002;  </p>
+</blockquote>
+<p>&#x62E5;&#x6709;&#x5B83;&#xFF0C;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x8C03;&#x7528; <code>store.getState()</code> &#x540C;&#x6B65;&#x83B7;&#x53D6;&#x5F53;&#x524D; state:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> INCREMENT <span class="token operator">=</span> <span class="token string">&apos;INCREMENT&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> INCREMENT_IF_ODD <span class="token operator">=</span> <span class="token string">&apos;INCREMENT_IF_ODD&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> increment <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> INCREMENT <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> incrementIfOdd <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> INCREMENT_IF_ODD <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> incrementIfOddEpic <span class="token operator">=</span> <span class="token punctuation">(</span>action$<span class="token punctuation">,</span> store<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span>
+  action$<span class="token punctuation">.</span><span class="token function">ofType</span><span class="token punctuation">(</span>INCREMENT_IF_ODD<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> store<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>counter <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// later...</span>
+<span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">incrementIfOdd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>&#x8BB0;&#x4F4F;: &#x5F53; Epic &#x63A5;&#x6536;&#x5230; action, &#x5B83;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x901A;&#x8FC7;&#x4F60;&#x7684; reducers &#x5E76;&#x4E14; state &#x88AB;&#x4FEE;&#x6539;&#x4E86;&#x3002;</p>
+</blockquote>
+<p>&#x5728; Epic &#x5185;&#x90E8;&#x4F7F;&#x7528; <code>store.dispatch()</code> &#x662F;&#x4E00;&#x4E2A;&#x5FEB;&#x901F;&#x9ED1;&#x5BA2;&#x7684;&#x65B9;&#x4FBF;&#x9003;&#x751F;&#x8231;&#xFF0C;&#x4F46;&#x662F;&#x8282;&#x5236;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x53CD;&#x6A21;&#x5F0F;&#x7684;&#x5E76;&#x4E14;&#x4F1A;&#x88AB;&#x5728;&#x672A;&#x6765;&#x7684;&#x7248;&#x672C;&#x4E2D;&#x79FB;&#x9664;&#x3002;</p>
+<hr>
+<h3 id="try-it-live">Try It Live!</h3>
+<p><a class="jsbin-embed" href="https://jsbin.com/somuvur/embed?js,output&amp;height=500px" target="_blank">View this demo on JSBinn</a><script src="https://static.jsbin.com/js/embed.min.js?3.37.0"></script></p>
+<h2 id="&#x7ED3;&#x5408;-epics">&#x7ED3;&#x5408; Epics</h2>
+<p>&#x6700;&#x540E;&#xFF0C;redux-observable &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x65B9;&#x6CD5; <a href="../api/combineEpics.html"><code>combineEpics()</code></a>&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5141;&#x8BB8;&#x5C06;&#x591A;&#x4E2A; Epics &#x8F7B;&#x6613;&#x7684;&#x7ED3;&#x5408;&#x4E3A;&#x4E00;&#x4E2A;: </p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> combineEpics <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;redux-observable&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rootEpic <span class="token operator">=</span> <span class="token function">combineEpics</span><span class="token punctuation">(</span>
+  pingEpic<span class="token punctuation">,</span>
+  fetchUserEpic
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x7B49;&#x4EF7;&#x4E8E;:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> merge <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;rxjs/observable/merge&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rootEpic <span class="token operator">=</span> <span class="token punctuation">(</span>action$<span class="token punctuation">,</span> store<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">merge</span><span class="token punctuation">(</span>
+  <span class="token function">pingEpic</span><span class="token punctuation">(</span>action$<span class="token punctuation">,</span> store<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">fetchUserEpic</span><span class="token punctuation">(</span>action$<span class="token punctuation">,</span> store<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="&#x4E0B;&#x4E00;&#x6B65;">&#x4E0B;&#x4E00;&#x6B65;</h2>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x63A2;&#x7D22;&#x600E;&#x6837; <a href="SettingUpTheMiddleware.html">&#x6FC0;&#x6D3B; Epics</a> &#x624D;&#x80FD;&#x5F00;&#x59CB;&#x76D1;&#x542C; actions&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="SettingUpTheMiddleware.html" class="navigation navigation-next " aria-label="Next page: Setting Up The Middleware">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Epics","level":"2.1","depth":1,"next":{"title":"Setting Up The Middleware","level":"2.2","depth":1,"path":"docs/basics/SettingUpTheMiddleware.md","ref":"docs/basics/SettingUpTheMiddleware.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","github","anker-enable","addcssjs"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/redux-observable/redux-observable/"},"anker-enable":{},"search":{},"addcssjs":{"js":["website/script.js","https://sidecar.gitter.im/dist/sidecar.v1.js"],"css":["website/style.css"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/redux-observable/redux-observable/tree/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"redux-observable","gitbook":"^3.1.1"},"file":{"path":"docs/basics/Epics.md","mtime":"2017-07-04T09:19:52.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-06T02:08:13.349Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-anker-enable/anker.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    
+    <script type="text/javascript" src="../../website/script.js"></script>
+    
+    <script type="text/javascript" src="../../https:/sidecar.gitter.im/dist/sidecar.v1.js"></script>
+    
+
+    </body>
+</html>
+
